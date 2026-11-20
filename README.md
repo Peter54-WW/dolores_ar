@@ -50,7 +50,7 @@ test/  ayudas_geo · geo_test · motor_ar_test · pasaporte_test · ar_viewmodel
 
 Las pruebas de `test/` se escribieron **antes** que el código. Al correr `flutter test` con `lib/` todavía vacía, nada compila:
 
-![Rojo: las pruebas no compilan](capturas/01_rojo_no_compila.png)
+![Rojo: las pruebas no compilan](captura/01_rojo_no_compila.png)
 
 ### 2. ❌ Error real atrapado por una prueba
 
@@ -63,7 +63,7 @@ metros < 1000 ? '${metros.round()} m' : '${(metros / 1000).toStringAsFixed(1)} k
 Con 999.6 m la condición es verdadera y luego `round()` da **"1000 m"** (debería decir "1.0 km"). Es un error de
 frontera como los que el manual enseña a cazar; la prueba de frontera lo atrapó:
 
-![Error atrapado por la prueba](capturas/02_error.png)
+![Error atrapado por la prueba](captura/02_error.png)
 
 **Corrección:** redondear primero y después elegir la unidad:
 
@@ -76,19 +76,19 @@ return m < 1000 ? '$m m' : '${(metros / 1000).toStringAsFixed(1)} km';   // ✅
 
 `flutter analyze` señaló avisos de estilo:
 
-![Analyze con avisos](capturas/03_analyze_avisos.png)
+![Analyze con avisos](captura/03_analyze_avisos.png)
 
 Se corrigieron y se volvió a analizar:
 
-![Analyze limpio](capturas/04_analyze_limpio.png)
+![Analyze limpio](captura/04_analyze_limpio.png)
 
 ### 4. 🟢 VERDE — las 48 pruebas pasan
 
-![Verde: todas las pruebas pasan](capturas/05_verde_pruebas.png)
+![Verde: todas las pruebas pasan](captura/05_verde_pruebas.png)
 
 ### 5. 📦 Compilación del APK
 
-![Compilación del APK](capturas/06_build_apk.png)
+![Compilación del APK](captura/06_build_apk.png)
 
 ---
 
