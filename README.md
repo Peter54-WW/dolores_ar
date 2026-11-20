@@ -32,7 +32,7 @@ de internet y la RA de superficie requiere un teléfono compatible con ARCore.
 
 ## 🏗️ Estructura
 
-```
+```text
 lib/
 ├── dominio/        geo (Haversine, rumbo, ángulos, campo de visión) · lugar · catalogo · motor_ar · pasaporte
 │                   fuentes (contratos FuentePosicion/FuenteBrujula) · excepciones
@@ -48,9 +48,7 @@ test/  ayudas_geo · geo_test · motor_ar_test · pasaporte_test · ar_viewmodel
 
 ### 1. 🔴 ROJO — las pruebas se escriben primero y fallan
 
-Las pruebas de `test/` se escribieron **antes** que el código. Al correr `flutter test` con `lib/` todavía vacía, nada compila:
-
-![Rojo: las pruebas no compilan](captura/01_rojo_no_compila.png)
+Las pruebas de `test/` se escribieron **antes** que el código. Al correr `flutter test` con `lib/` todavía vacía, nada compila.
 
 ### 2. ❌ Error real atrapado por una prueba
 
@@ -61,9 +59,7 @@ metros < 1000 ? '${metros.round()} m' : '${(metros / 1000).toStringAsFixed(1)} k
 ```
 
 Con 999.6 m la condición es verdadera y luego `round()` da **"1000 m"** (debería decir "1.0 km"). Es un error de
-frontera como los que el manual enseña a cazar; la prueba de frontera lo atrapó:
-
-![Error atrapado por la prueba](captura/02_error.png)
+frontera como los que el manual enseña a cazar; la prueba de frontera lo atrapó.
 
 **Corrección:** redondear primero y después elegir la unidad:
 
@@ -74,21 +70,17 @@ return m < 1000 ? '$m m' : '${(metros / 1000).toStringAsFixed(1)} km';   // ✅
 
 ### 3. 🔵 REFACTOR — limpiar sin romper nada
 
-`flutter analyze` señaló avisos de estilo:
+`flutter analyze` señaló avisos de estilo.
 
-![Analyze con avisos](captura/03_analyze_avisos.png)
-
-Se corrigieron y se volvió a analizar:
-
-![Analyze limpio](captura/04_analyze_limpio.png)
+Se corrigieron y se volvió a analizar hasta dejar `flutter analyze` limpio.
 
 ### 4. 🟢 VERDE — las 48 pruebas pasan
 
-![Verde: todas las pruebas pasan](captura/05_verde_pruebas.png)
+Las 48 pruebas del proyecto pasan tras completar el ciclo de desarrollo y correcciones.
 
 ### 5. 📦 Compilación del APK
 
-![Compilación del APK](captura/06_build_apk.png)
+El APK de liberación se compila en modo `release` para `android-arm64`.
 
 ---
 
@@ -145,4 +137,3 @@ flutter test
 ```bash
 flutter run
 ```
-
